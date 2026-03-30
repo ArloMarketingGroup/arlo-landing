@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Receptionist | Arlo Marketing Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --purple:       #5B21F5;
+      --purple-light: #7B47FF;
+      --purple-soft:  #EDE9FF;
+      --purple-mid:   #C4B5FD;
+      --dark:         #0D0D0D;
+      --body:         #1A1A1A;
+      --muted:        #6B7280;
+      --border:       #E5E7EB;
+      --card-bg:      #FAFAFA;
+      --white:        #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--dark);
+      font-family: 'Inter', system-ui, sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── LOGO MARK SVG component (reused) ── */
+    .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 6%;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .nav-logo-text .line1 {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dark);
+    }
+
+    .nav-logo-text .line1 span {
+      color: var(--purple);
+    }
+
+    .nav-logo-text .line2 {
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-top: 1px solid #ccc;
+      padding-top: 2px;
+      margin-top: 2px;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .nav-phone {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--body);
+      text-decoration: none;
+    }
+
+    .nav-phone:hover { color: var(--purple); }
+
+    .nav-ig {
+      display: flex;
+      align-items: center;
+      color: var(--purple);
+      transition: opacity 0.2s;
+    }
+    .nav-ig:hover { opacity: 0.7; }
+
+    .btn-nav {
+      background: var(--purple);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 10px 22px;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-nav:hover {
+      background: var(--purple-light);
+      transform: translateY(-1px);
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 6% 80px;
+      background: linear-gradient(135deg, #FAFAFE 0%, #F0EBFF 60%, #EDE9FF 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* decorative blobs */
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -180px; right: -180px;
+      width: 560px; height: 560px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(91,33,245,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: -120px; left: -100px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(91,33,245,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 60px;
+      width: 100%;
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--purple-soft);
+      border: 1px solid var(--purple-mid);
+      color: var(--purple);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 7px 14px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+
+    .badge-dot {
+      width: 7px; height: 7px;
+      background: var(--purple);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--dark);
+      margin-bottom: 22px;
+    }
+
+    h1 .highlight {
+      color: var(--purple);
+      position: relative;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 460px;
+      margin-bottom: 36px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--purple);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.98rem;
+      padding: 15px 30px;
+      border-radius: 7px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(91,33,245,0.3);
+    }
+
+    .btn-primary:hover {
+      background: var(--purple-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(91,33,245,0.4);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--dark);
+      font-weight: 600;
+      font-size: 0.98rem;
+      padding: 15px 30px;
+      border-radius: 7px;
+      border: 1.5px solid var(--border);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--purple);
+      color: var(--purple);
+    }
+
+    .hero-visual {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-card {
+      background: var(--white);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 60px rgba(91,33,245,0.12), 0 4px 20px rgba(0,0,0,0.06);
+      overflow: hidden;
+    }
+
+    .hero-card-header {
+      background: var(--purple);
+      padding: 16px 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-card-header .dots { display: flex; gap: 6px; }
+    .hero-card-header .dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+    }
+
+    .hero-card-header .title {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+      margin-left: 6px;
+      letter-spacing: 0.06em;
+    }
+
+    .hero-card-body { padding: 22px; }
+
+    .chat-msg {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 14px;
+      align-items: flex-start;
+    }
+
+    .chat-avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 700; flex-shrink: 0;
+    }
+
+    .chat-avatar.ai { background: var(--purple-soft); color: var(--purple); }
+    .chat-avatar.user { background: #F3F4F6; color: var(--muted); }
+
+    .chat-bubble {
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      max-width: 240px;
+    }
+
+    .chat-bubble.ai {
+      background: var(--purple-soft);
+      color: var(--dark);
+      border-bottom-left-radius: 4px;
+    }
+
+    .chat-bubble.user {
+      background: #F3F4F6;
+      color: var(--dark);
+      border-bottom-right-radius: 4px;
+    }
+
+    .chat-msg.right { flex-direction: row-reverse; }
+
+    .typing {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 12px 14px;
+    }
+
+    .typing span {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--purple-mid);
+      animation: typing 1.2s infinite;
+    }
+
+    .typing span:nth-child(2) { animation-delay: 0.2s; }
+    .typing span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes typing {
+      0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+      30% { transform: translateY(-6px); opacity: 1; }
+    }
+
+    /* ── VIDEO ── */
+    #video {
+      padding: 90px 6%;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+    }
+
+    .section-label {
+      text-align: center;
+      font-size: 0.76rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--purple);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--dark);
+      margin-bottom: 14px;
+    }
+
+    .section-desc {
+      text-align: center;
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 500px;
+      margin: 0 auto 52px;
+      line-height: 1.7;
+    }
+
+    .video-wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(91,33,245,0.15), 0 4px 20px rgba(0,0,0,0.08);
+      border: 1px solid rgba(91,33,245,0.15);
+    }
+
+    .video-wrapper video,
+    .video-wrapper iframe {
+      width: 100%; aspect-ratio: 16/9; display: block; background: #F3F4F6;
+    }
+
+    .video-placeholder {
+      width: 100%; aspect-ratio: 16/9;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #F8F5FF, var(--purple-soft));
+      gap: 16px; cursor: pointer;
+    }
+
+    .play-btn {
+      width: 76px; height: 76px; border-radius: 50%;
+      background: var(--purple);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 30px rgba(91,33,245,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .play-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 12px 40px rgba(91,33,245,0.5);
+    }
+
+    .play-btn svg { width: 28px; height: 28px; fill: white; margin-left: 5px; }
+    .video-placeholder p { color: var(--muted); font-size: 0.88rem; }
+
+    /* ── OFFER ── */
+    #offer {
+      padding: 90px 6%;
+      background: #FAFAFE;
+      border-top: 1px solid var(--border);
+    }
+
+    .offer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 22px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .offer-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 30px 26px;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+
+    .offer-card:hover {
+      border-color: rgba(91,33,245,0.3);
+      box-shadow: 0 8px 30px rgba(91,33,245,0.08);
+      transform: translateY(-3px);
+    }
+
+    .offer-icon-wrap {
+      width: 48px; height: 48px; border-radius: 10px;
+      background: var(--purple-soft);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; margin-bottom: 18px;
+    }
+
+    .offer-card h3 {
+      font-size: 1.05rem; font-weight: 700;
+      margin-bottom: 8px; color: var(--dark);
+    }
+
+    .offer-card p { font-size: 0.93rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── HOW IT WORKS ── */
+    #how {
+      padding: 90px 6%;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+    }
+
+    .steps {
+      max-width: 660px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      left: 27px; top: 28px; bottom: 28px; width: 2px;
+      background: linear-gradient(to bottom, var(--purple), var(--purple-mid), transparent);
+    }
+
+    .step {
+      display: flex; gap: 26px; align-items: flex-start;
+      padding: 24px 0;
+    }
+
+    .step-num {
+      flex-shrink: 0; width: 54px; height: 54px; border-radius: 50%;
+      background: var(--purple-soft); border: 2px solid var(--purple);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1rem; color: var(--purple);
+      position: relative; z-index: 1;
+    }
+
+    .step-content h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 5px; }
+    .step-content p { font-size: 0.93rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── REVIEWS ── */
+    #reviews {
+      padding: 90px 6%;
+      background: #FAFAFE;
+      border-top: 1px solid var(--border);
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+      max-width: 1000px; margin: 0 auto;
+    }
+
+    .review-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 30px 26px;
+    }
+
+    .stars { color: var(--purple); font-size: 1rem; letter-spacing: 2px; margin-bottom: 14px; }
+    .review-text { font-size: 0.96rem; line-height: 1.7; color: var(--body); margin-bottom: 20px; }
+
+    .reviewer { display: flex; align-items: center; gap: 12px; }
+    .reviewer-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: var(--purple-soft); border: 1.5px solid var(--purple-mid);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; color: var(--purple); font-size: 0.9rem;
+    }
+
+    .reviewer-info strong { display: block; font-size: 0.93rem; color: var(--dark); }
+    .reviewer-info span { font-size: 0.8rem; color: var(--muted); }
+
+    /* ── CONTACT ── */
+    #contact {
+      padding: 90px 6%;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-container { max-width: 580px; margin: 0 auto; }
+
+    .contact-info { display: flex; flex-direction: column; gap: 14px; margin-bottom: 36px; }
+
+    .contact-item {
+      display: flex; align-items: center; gap: 16px;
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 10px; padding: 18px 20px;
+      text-decoration: none; color: var(--dark);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .contact-item:hover {
+      border-color: rgba(91,33,245,0.4);
+      box-shadow: 0 4px 20px rgba(91,33,245,0.08);
+    }
+
+    .contact-item .icon {
+      width: 42px; height: 42px; border-radius: 8px;
+      background: var(--purple-soft);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+
+    .contact-item .label { font-size: 0.76rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px; }
+    .contact-item .value { font-size: 1rem; font-weight: 600; color: var(--dark); }
+
+    /* form */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    .form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 12px; }
+    .form-group label { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--card-bg); border: 1.5px solid var(--border);
+      border-radius: 7px; color: var(--dark); font-size: 0.97rem;
+      padding: 12px 15px; outline: none; font-family: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--purple);
+      box-shadow: 0 0 0 3px rgba(91,33,245,0.1);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    .form-submit {
+      width: 100%; background: var(--purple); color: var(--white);
+      font-weight: 700; font-size: 1rem; padding: 15px; border-radius: 7px;
+      border: none; cursor: pointer; letter-spacing: 0.04em;
+      text-transform: uppercase; font-family: inherit;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(91,33,245,0.3);
+    }
+
+    .form-submit:hover {
+      background: var(--purple-light);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 30px rgba(91,33,245,0.4);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 28px 6%;
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 14px;
+      background: #FAFAFE;
+    }
+
+    .footer-logo {
+      display: flex; flex-direction: column; line-height: 1.2;
+    }
+
+    .footer-logo .l1 {
+      font-size: 0.78rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    .footer-logo .l1 span { color: var(--purple); }
+    .footer-logo .l2 { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+
+    footer p { font-size: 0.8rem; color: var(--muted); }
+
+    /* ── PRICING ── */
+    #pricing {
+      padding: 90px 6%;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      max-width: 1000px;
+      margin: 0 auto 28px;
+      align-items: start;
+    }
+
+    .pricing-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 32px 28px;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+      position: relative;
+    }
+
+    .pricing-card:hover {
+      border-color: rgba(91,33,245,0.25);
+      box-shadow: 0 8px 30px rgba(91,33,245,0.07);
+      transform: translateY(-3px);
+    }
+
+    .pricing-card.featured {
+      background: var(--purple);
+      border-color: var(--purple);
+      box-shadow: 0 16px 50px rgba(91,33,245,0.28);
+      transform: translateY(-6px);
+    }
+
+    .pricing-card.featured:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 24px 60px rgba(91,33,245,0.36);
+    }
+
+    .pricing-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 100px;
+      margin-bottom: 18px;
+    }
+
+    .pricing-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 10px;
+    }
+
+    .pricing-card.featured .pricing-label {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .pricing-price {
+      font-size: 2.4rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: var(--dark);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .pricing-card.featured .pricing-price { color: #fff; }
+
+    .pricing-subtitle {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .pricing-card.featured .pricing-subtitle { color: rgba(255,255,255,0.75); }
+
+    .pricing-divider {
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 18px;
+    }
+
+    .pricing-card.featured .pricing-divider { background: rgba(255,255,255,0.2); }
+
+    .pricing-note {
+      font-size: 0.9rem;
+      color: var(--body);
+      line-height: 1.6;
+    }
+
+    .pricing-card.featured .pricing-note { color: rgba(255,255,255,0.88); }
+
+    .pricing-subnote {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .pricing-card.featured .pricing-subnote { color: rgba(255,255,255,0.55); }
+
+    .pricing-summary {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #FAFAFE;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 32px;
+      gap: 20px;
+    }
+
+    .pricing-summary-item {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .pricing-summary-item .ps-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    .pricing-summary-item .ps-value {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--dark);
+      letter-spacing: -0.02em;
+    }
+
+    .pricing-summary-divider {
+      width: 1px;
+      height: 40px;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .form-row { grid-template-columns: 1fr; }
+      .nav-phone { display: none; }
+      footer { flex-direction: column; text-align: center; }
+      .steps::before { display: none; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .pricing-card.featured { transform: none; }
+      .pricing-summary { flex-direction: column; align-items: flex-start; gap: 14px; }
+      .pricing-summary-divider { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a href="#hero" class="logo-mark">
+      <!-- Logo mark SVG (A. symbol) -->
+      <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="28" y="8" width="22" height="64" rx="11" transform="rotate(20 28 8)" fill="#5B21F5"/>
+        <circle cx="70" cy="72" r="15" fill="#5B21F5"/>
+      </svg>
+      <div class="nav-logo-text">
+        <div class="line1"><span>AI</span> Receptionist</div>
+        <div class="line2">Marketing Group</div>
+      </div>
+    </a>
+    <div class="nav-right">
+      <a href="https://www.instagram.com/arlomarketinggroup/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener" class="nav-ig" aria-label="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.975-.975-1.246-2.242-1.308-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.975-.975 2.242-1.246 3.608-1.308C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.014 7.052.072 5.197.157 3.355.673 2.014 2.014.673 3.355.157 5.197.072 7.052.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.085 1.855.601 3.697 1.942 5.038 1.341 1.341 3.183 1.857 5.038 1.942C8.332 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.855-.085 3.697-.601 5.038-1.942 1.341-1.341 1.857-3.183 1.942-5.038C23.986 15.668 24 15.259 24 12s-.014-3.668-.072-4.948c-.085-1.855-.601-3.697-1.942-5.038C20.645.673 18.803.157 16.948.072 15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+        </svg>
+      </a>
+      <a href="tel:9454009135" class="nav-phone">(945) 400-9135</a>
+      <a href="#contact" class="btn-nav">Book a Demo</a>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="badge">
+          <div class="badge-dot"></div>
+          AI Receptionist for Barbershops
+        </div>
+        <h1>Never Miss a<br /><span class="highlight">Booking</span> Again.</h1>
+        <p class="hero-sub">
+          Our AI answers every call, books appointments, and follows up with clients — 24/7 — so you can focus on what you do best: cutting.
+        </p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn-primary">Book a Free Demo</a>
+          <a href="#video" class="btn-ghost">Watch How It Works</a>
+        </div>
+      </div>
+
+      <!-- Fake AI chat UI card -->
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-header">
+            <div class="dots">
+              <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+            </div>
+            <span class="title">Arlo AI · Live Call</span>
+          </div>
+          <div class="hero-card-body">
+            <div class="chat-msg">
+              <div class="chat-avatar ai">AI</div>
+              <div class="chat-bubble ai">Hey! Thanks for calling Fresh Cuts. I'm the AI receptionist. Want to book an appointment?</div>
+            </div>
+            <div class="chat-msg right">
+              <div class="chat-avatar user">C</div>
+              <div class="chat-bubble user">Yeah, I need a fade. Saturday morning if possible.</div>
+            </div>
+            <div class="chat-msg">
+              <div class="chat-avatar ai">AI</div>
+              <div class="chat-bubble ai">I've got 10am or 11am open on Saturday. Which works better for you?</div>
+            </div>
+            <div class="chat-msg right">
+              <div class="chat-avatar user">C</div>
+              <div class="chat-bubble user">10am works.</div>
+            </div>
+            <div class="chat-msg">
+              <div class="chat-avatar ai">AI</div>
+              <div class="chat-bubble ai" style="display:flex;align-items:center;gap:8px;">
+                Booking you in...
+                <div class="typing" style="padding:0;">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VIDEO ── -->
+  <section id="video">
+    <div class="section-label">See It In Action</div>
+    <h2 class="section-title">Watch the Demo</h2>
+    <p class="section-desc">See exactly how our AI answers calls and books appointments for barbershops like yours.</p>
+    <div class="video-wrapper">
+      <!--
+        TO ADD YOUR VIDEO — replace the block below with one of these:
+
+        YouTube:
+          <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+
+        Loom:
+          <iframe src="https://www.loom.com/embed/YOUR_LOOM_ID" frameborder="0" allowfullscreen></iframe>
+
+        Self-hosted mp4:
+          <video src="your-video.mp4" controls poster="thumb.jpg"></video>
+      -->
+      <div class="video-placeholder">
+        <div class="play-btn">
+          <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+        <p>Your demo video goes here</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── OFFER ── -->
+  <section id="offer">
+    <div class="section-label">What You Get</div>
+    <h2 class="section-title">Your Shop, On Autopilot</h2>
+    <p class="section-desc">A done-for-you AI receptionist built specifically for barbershops.</p>
+    <div class="offer-grid">
+      <div class="offer-card">
+        <div class="offer-icon-wrap">📞</div>
+        <h3>24/7 AI Phone Answering</h3>
+        <p>Every missed call is a missed booking. Your AI picks up every time — nights, weekends, and holidays included.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon-wrap">📅</div>
+        <h3>Automatic Appointment Booking</h3>
+        <p>The AI checks your calendar and books clients in real time. No double-booking, no back-and-forth texting.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon-wrap">💬</div>
+        <h3>SMS Follow-Ups & Reminders</h3>
+        <p>Automated reminders reduce no-shows so your chair stays full and your revenue stays consistent.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon-wrap">⚡</div>
+        <h3>Set Up in 48 Hours</h3>
+        <p>We handle the entire setup. No tech skills needed. You're live and taking bookings within two days.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon-wrap">🎯</div>
+        <h3>Custom to Your Shop</h3>
+        <p>The AI learns your services, prices, and availability. It sounds just like your front desk — because it is.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon-wrap">📊</div>
+        <h3>Call & Booking Reports</h3>
+        <p>Know exactly how many calls you're getting, how many convert to bookings, and where your leads are coming from.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ── -->
+  <section id="how">
+    <div class="section-label">The Process</div>
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-desc">Getting started is simple. We do the heavy lifting so you don't have to.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Book a Free Demo Call</h3>
+          <p>We walk you through exactly how the AI works. No pressure, no pitch — just a real demo tailored to your shop.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>We Build Your AI Receptionist</h3>
+          <p>We train the AI on your shop's services, hours, and style. You approve everything before it goes live.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Go Live in 48 Hours</h3>
+          <p>Your AI receptionist is active and handling calls. You focus on cutting — your AI handles the front desk.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>Watch Your Bookings Grow</h3>
+          <p>No more missed calls, no more lost clients. More revenue, less stress — every single week.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── REVIEWS ── -->
+  <section id="reviews">
+    <div class="section-label">What Barbers Are Saying</div>
+    <h2 class="section-title">Real Results</h2>
+    <p class="section-desc">Barbers across the country are growing their business with our AI receptionist.</p>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"I was losing at least 5–6 bookings a week just from missed calls while I was cutting. Since signing up, my schedule has been packed solid. Best investment I've made for my shop."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">DM</div>
+          <div class="reviewer-info">
+            <strong>Darius M.</strong>
+            <span>Fresh Cuts Barbershop — Dallas, TX</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Setup was fast and easy. The AI sounds professional and handles everything. I don't have to worry about the phone anymore — it just works. My clients love how quick the booking is."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">TJ</div>
+          <div class="reviewer-info">
+            <strong>Tony J.</strong>
+            <span>Prime Fadez — Atlanta, GA</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"I was skeptical at first, but the demo sold me. Within the first week I had 12 new bookings I would've missed. The reminders alone have cut my no-shows in half."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">KW</div>
+          <div class="reviewer-info">
+            <strong>Kevin W.</strong>
+            <span>The Barbery — Houston, TX</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PRICING ── -->
+  <section id="pricing">
+    <div class="section-label">Transparent Pricing</div>
+    <h2 class="section-title">Simple, Honest Costs</h2>
+    <p class="section-desc">No contracts. No surprises. Just two straightforward charges to keep your AI receptionist live and running.</p>
+
+    <div class="pricing-grid">
+
+      <!-- Card 1: Monthly Fee (featured) -->
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Most Important</div>
+        <div class="pricing-label">Monthly Fee</div>
+        <div class="pricing-price">$197<span style="font-size:1.1rem;font-weight:700;">/mo</span></div>
+        <div class="pricing-subtitle">We keep it running. You keep cutting.</div>
+        <div class="pricing-divider"></div>
+        <div class="pricing-note">Monitoring, updates &amp; support included</div>
+      </div>
+
+      <!-- Card 3: Usage Fee -->
+      <div class="pricing-card">
+        <div class="pricing-label">Usage Fee</div>
+        <div class="pricing-price">$30–$80<span style="font-size:1rem;font-weight:700;">/mo</span></div>
+        <div class="pricing-subtitle">Based on your call volume</div>
+        <div class="pricing-divider"></div>
+        <div class="pricing-note">
+          Think of it like your AI's phone bill
+          <span class="pricing-subnote">Charged per minute of call time</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Summary bar -->
+    <div class="pricing-summary">
+      <div class="pricing-summary-item">
+        <span class="ps-label">Monthly Fee</span>
+        <span class="ps-value">$197/mo</span>
+      </div>
+      <div class="pricing-summary-divider"></div>
+      <div class="pricing-summary-item">
+        <span class="ps-label">All in, every month</span>
+        <span class="ps-value">~$250/mo total</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section id="contact">
+    <div class="section-label">Let's Talk</div>
+    <h2 class="section-title">Ready to Fill Your Chair?</h2>
+    <p class="section-desc">Book a free 15-minute demo or reach out directly. We'll show you exactly how our AI works for your shop.</p>
+
+    <div class="contact-container">
+      <div class="contact-info">
+        <a href="tel:9454009135" class="contact-item">
+          <div class="icon">📞</div>
+          <div>
+            <div class="label">Call or Text</div>
+            <div class="value">(945) 400-9135</div>
+          </div>
+        </a>
+        <a href="mailto:ArloMarketingGroup@gmail.com" class="contact-item">
+          <div class="icon">✉️</div>
+          <div>
+            <div class="label">Email</div>
+            <div class="value">ArloMarketingGroup@gmail.com</div>
+          </div>
+        </a>
+      </div>
+
+      <div data-tf-live="01KMXV1DYYFEMD5ZF0Z7FAHEB4"></div>
+      <script src="https://embed.typeform.com/next/embed.js"></script>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-logo">
+      <div class="l1"><span>AI</span> Receptionist</div>
+      <div class="l2">Arlo Marketing Group</div>
+    </div>
+    <p>&copy; 2026 Arlo Marketing Group. All rights reserved.</p>
+  </footer>
+
+
+</body>
+</html>
