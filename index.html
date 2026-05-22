@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Receptionist for Barbershops | Arlo Marketing Group</title>
+  <title>AI Receptionist for Med Spas | Arlo Marketing Group</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -34,7 +34,6 @@
       overflow-x: hidden;
     }
 
-    /* ── LOGO MARK SVG component (reused) ── */
     .logo-mark {
       display: inline-flex;
       align-items: center;
@@ -70,9 +69,7 @@
       color: var(--dark);
     }
 
-    .nav-logo-text .line1 span {
-      color: var(--purple);
-    }
+    .nav-logo-text .line1 span { color: var(--purple); }
 
     .nav-logo-text .line2 {
       font-size: 0.62rem;
@@ -137,7 +134,6 @@
       overflow: hidden;
     }
 
-    /* decorative blobs */
     #hero::before {
       content: '';
       position: absolute;
@@ -407,30 +403,6 @@
       width: 100%; aspect-ratio: 16/9; display: block; background: #F3F4F6;
     }
 
-    .video-placeholder {
-      width: 100%; aspect-ratio: 16/9;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      background: linear-gradient(135deg, #F8F5FF, var(--purple-soft));
-      gap: 16px; cursor: pointer;
-    }
-
-    .play-btn {
-      width: 76px; height: 76px; border-radius: 50%;
-      background: var(--purple);
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 8px 30px rgba(91,33,245,0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .play-btn:hover {
-      transform: scale(1.08);
-      box-shadow: 0 12px 40px rgba(91,33,245,0.5);
-    }
-
-    .play-btn svg { width: 28px; height: 28px; fill: white; margin-left: 5px; }
-    .video-placeholder p { color: var(--muted); font-size: 0.88rem; }
-
     /* ── OFFER ── */
     #offer {
       padding: 90px 6%;
@@ -510,40 +482,6 @@
     .step-content h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 5px; }
     .step-content p { font-size: 0.93rem; color: var(--muted); line-height: 1.65; }
 
-    /* ── REVIEWS ── */
-    #reviews {
-      padding: 90px 6%;
-      background: #FAFAFE;
-      border-top: 1px solid var(--border);
-    }
-
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 22px;
-      max-width: 1000px; margin: 0 auto;
-    }
-
-    .review-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 12px; padding: 30px 26px;
-    }
-
-    .stars { color: var(--purple); font-size: 1rem; letter-spacing: 2px; margin-bottom: 14px; }
-    .review-text { font-size: 0.96rem; line-height: 1.7; color: var(--body); margin-bottom: 20px; }
-
-    .reviewer { display: flex; align-items: center; gap: 12px; }
-    .reviewer-avatar {
-      width: 42px; height: 42px; border-radius: 50%;
-      background: var(--purple-soft); border: 1.5px solid var(--purple-mid);
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700; color: var(--purple); font-size: 0.9rem;
-    }
-
-    .reviewer-info strong { display: block; font-size: 0.93rem; color: var(--dark); }
-    .reviewer-info span { font-size: 0.8rem; color: var(--muted); }
-
     /* ── CONTACT ── */
     #contact {
       padding: 90px 6%;
@@ -578,7 +516,6 @@
     .contact-item .label { font-size: 0.76rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px; }
     .contact-item .value { font-size: 1rem; font-weight: 600; color: var(--dark); }
 
-    /* form */
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
     .form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 12px; }
     .form-group label { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
@@ -637,161 +574,6 @@
 
     footer p { font-size: 0.8rem; color: var(--muted); }
 
-    /* ── PRICING ── */
-    #pricing {
-      padding: 90px 6%;
-      background: var(--white);
-      border-top: 1px solid var(--border);
-    }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-      max-width: 1000px;
-      margin: 0 auto 28px;
-      align-items: start;
-    }
-
-    .pricing-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 32px 28px;
-      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
-      position: relative;
-    }
-
-    .pricing-card:hover {
-      border-color: rgba(91,33,245,0.25);
-      box-shadow: 0 8px 30px rgba(91,33,245,0.07);
-      transform: translateY(-3px);
-    }
-
-    .pricing-card.featured {
-      background: var(--purple);
-      border-color: var(--purple);
-      box-shadow: 0 16px 50px rgba(91,33,245,0.28);
-      transform: translateY(-6px);
-    }
-
-    .pricing-card.featured:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 24px 60px rgba(91,33,245,0.36);
-    }
-
-    .pricing-badge {
-      display: inline-block;
-      background: rgba(255,255,255,0.2);
-      color: #fff;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 100px;
-      margin-bottom: 18px;
-    }
-
-    .pricing-label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--purple);
-      margin-bottom: 10px;
-    }
-
-    .pricing-card.featured .pricing-label {
-      color: rgba(255,255,255,0.7);
-    }
-
-    .pricing-price {
-      font-size: 2.4rem;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      color: var(--dark);
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-
-    .pricing-card.featured .pricing-price { color: #fff; }
-
-    .pricing-subtitle {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--muted);
-      margin-bottom: 18px;
-    }
-
-    .pricing-card.featured .pricing-subtitle { color: rgba(255,255,255,0.75); }
-
-    .pricing-divider {
-      height: 1px;
-      background: var(--border);
-      margin-bottom: 18px;
-    }
-
-    .pricing-card.featured .pricing-divider { background: rgba(255,255,255,0.2); }
-
-    .pricing-note {
-      font-size: 0.9rem;
-      color: var(--body);
-      line-height: 1.6;
-    }
-
-    .pricing-card.featured .pricing-note { color: rgba(255,255,255,0.88); }
-
-    .pricing-subnote {
-      display: block;
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-top: 6px;
-    }
-
-    .pricing-card.featured .pricing-subnote { color: rgba(255,255,255,0.55); }
-
-    .pricing-summary {
-      max-width: 1000px;
-      margin: 0 auto;
-      background: #FAFAFE;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 32px;
-      gap: 20px;
-    }
-
-    .pricing-summary-item {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .pricing-summary-item .ps-label {
-      font-size: 0.78rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-    }
-
-    .pricing-summary-item .ps-value {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: var(--dark);
-      letter-spacing: -0.02em;
-    }
-
-    .pricing-summary-divider {
-      width: 1px;
-      height: 40px;
-      background: var(--border);
-      flex-shrink: 0;
-    }
-
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .hero-inner { grid-template-columns: 1fr; }
@@ -800,10 +582,6 @@
       .nav-phone { display: none; }
       footer { flex-direction: column; text-align: center; }
       .steps::before { display: none; }
-      .pricing-grid { grid-template-columns: 1fr; }
-      .pricing-card.featured { transform: none; }
-      .pricing-summary { flex-direction: column; align-items: flex-start; gap: 14px; }
-      .pricing-summary-divider { display: none; }
     }
   </style>
 </head>
@@ -812,7 +590,6 @@
   <!-- ── NAV ── -->
   <nav>
     <a href="#hero" class="logo-mark">
-      <!-- Logo mark SVG (A. symbol) -->
       <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="28" y="8" width="22" height="64" rx="11" transform="rotate(20 28 8)" fill="#5B21F5"/>
         <circle cx="70" cy="72" r="15" fill="#5B21F5"/>
@@ -825,7 +602,7 @@
     <div class="nav-right">
       <a href="https://www.instagram.com/arlomarketinggroup/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener" class="nav-ig" aria-label="Instagram">
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.975-.975-1.246-2.242-1.308-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.975-.975 2.242-1.246 3.608-1.308C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.014 7.052.072 5.197.157 3.355.673 2.014 2.014.673 3.355.157 5.197.072 7.052.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.085 1.855.601 3.697 1.942 5.038 1.341 1.341 3.183 1.857 5.038 1.942C8.332 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.855-.085 3.697-.601 5.038-1.942 1.341-1.341 1.857-3.183 1.942-5.038C23.986 15.668 24 15.259 24 12s-.014-3.668-.072-4.948c-.085-1.855-.601-3.697-1.942-5.038C20.645.673 18.803.157 16.948.072 15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.975.975-1.246-2.242-1.308-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.975-.975 2.242-1.246 3.608-1.308C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.014 7.052.072 5.197.157 3.355.673 2.014 2.014.673 3.355.157 5.197.072 7.052.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.085 1.855.601 3.697 1.942 5.038 1.341 1.341 3.183 1.857 5.038 1.942C8.332 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.855-.085 3.697-.601 5.038-1.942 1.341-1.341 1.857-3.183 1.942-5.038C23.986 15.668 24 15.259 24 12s-.014-3.668-.072-4.948c-.085-1.855-.601-3.697-1.942-5.038C20.645.673 18.803.157 16.948.072 15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
         </svg>
       </a>
       <a href="tel:9454009135" class="nav-phone">(945) 400-9135</a>
@@ -839,19 +616,19 @@
       <div class="hero-content">
         <div class="badge">
           <div class="badge-dot"></div>
-          AI Receptionist for Barbershops
+          AI Receptionist for Med Spas
         </div>
-        <h1>Never Miss a<br /><span class="highlight">Cut</span> Again.</h1>
+        <h1>Never Miss a<br /><span class="highlight">Booking</span> Again.</h1>
         <p class="hero-sub">
-          An AI receptionist that answers your phone 24/7, books appointments automatically, and handles your front desk — so you stay focused on cutting and never lose a customer to a missed call again.
+          An AI receptionist that answers your phone 24/7, books consultations automatically, and handles your front desk — so your staff stays focused on clients and you never lose revenue to a missed call again.
         </p>
         <div class="hero-btns">
           <a href="#contact" class="btn-primary">Book a Free Demo</a>
-          <a href="#video" class="btn-ghost">Watch How It Works</a>
+          <a href="#video" class="btn-ghost">See It in Action</a>
         </div>
       </div>
 
-      <!-- Fake AI chat UI card -->
+      <!-- AI chat UI card -->
       <div class="hero-visual">
         <div class="hero-card">
           <div class="hero-card-header">
@@ -863,24 +640,24 @@
           <div class="hero-card-body">
             <div class="chat-msg">
               <div class="chat-avatar ai">AI</div>
-              <div class="chat-bubble ai">Hey! Thanks for calling Fresh Cuts. I'm the AI receptionist. Want to book an appointment?</div>
+              <div class="chat-bubble ai">Thanks for calling Radiance Med Spa! I'm the AI receptionist. How can I help you today?</div>
             </div>
             <div class="chat-msg right">
               <div class="chat-avatar user">C</div>
-              <div class="chat-bubble user">Yeah, I need a fade. Saturday morning if possible.</div>
+              <div class="chat-bubble user">Hi, I'm interested in a Botox consultation.</div>
             </div>
             <div class="chat-msg">
               <div class="chat-avatar ai">AI</div>
-              <div class="chat-bubble ai">I've got 10am or 11am open on Saturday. Which works better for you?</div>
+              <div class="chat-bubble ai">I have Tuesday at 2pm or Thursday at 10am available. Which works better for you?</div>
             </div>
             <div class="chat-msg right">
               <div class="chat-avatar user">C</div>
-              <div class="chat-bubble user">10am works.</div>
+              <div class="chat-bubble user">Thursday at 10 works great.</div>
             </div>
             <div class="chat-msg">
               <div class="chat-avatar ai">AI</div>
               <div class="chat-bubble ai" style="display:flex;align-items:center;gap:8px;">
-                Booking you in...
+                Booking you in for Thursday...
                 <div class="typing" style="padding:0;">
                   <span></span><span></span><span></span>
                 </div>
@@ -896,7 +673,7 @@
   <section id="video">
     <div class="section-label">See It In Action</div>
     <h2 class="section-title">Watch the Demo</h2>
-    <p class="section-desc">See exactly how our AI answers calls and books appointments for barbershops like yours.</p>
+    <p class="section-desc">See exactly how our AI answers calls and books appointments for med spas like yours.</p>
     <div class="video-wrapper">
       <style>wistia-player[media-id='2hczo0tjyn']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/2hczo0tjyn/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style>
       <wistia-player media-id="2hczo0tjyn" aspect="1.7777777777777777" autoplay muted></wistia-player>
@@ -906,38 +683,38 @@
   <!-- ── OFFER ── -->
   <section id="offer">
     <div class="section-label">What You Get</div>
-    <h2 class="section-title">Your Shop, On Autopilot</h2>
-    <p class="section-desc">A done-for-you AI receptionist built specifically for barbershops.</p>
+    <h2 class="section-title">Your Spa, On Autopilot</h2>
+    <p class="section-desc">A done-for-you AI receptionist built specifically for med spas.</p>
     <div class="offer-grid">
       <div class="offer-card">
         <div class="offer-icon-wrap">📞</div>
         <h3>24/7 AI Phone Answering</h3>
-        <p>Every call gets picked up — no voicemail, no missed customers. Nights, weekends, and holidays included.</p>
+        <p>Every call gets picked up — no voicemail, no missed clients. Nights, weekends, and holidays included.</p>
       </div>
       <div class="offer-card">
         <div class="offer-icon-wrap">📅</div>
         <h3>Automatic Appointment Booking</h3>
-        <p>The AI checks your availability and books clients live on the call. No double-booking, no back-and-forth.</p>
+        <p>The AI checks your availability and books consultations live on the call. No double-booking, no back-and-forth.</p>
       </div>
       <div class="offer-card">
         <div class="offer-icon-wrap">🔕</div>
-        <h3>Zero Interruptions</h3>
-        <p>You only stop cutting for what matters. If it's personal, you'll know. Everything else, the AI handles.</p>
+        <h3>Your Staff Stays Focused</h3>
+        <p>Your team stays in the treatment room where they belong. The AI handles the front desk so no one gets pulled away mid-service.</p>
       </div>
       <div class="offer-card">
         <div class="offer-icon-wrap">🚫</div>
-        <h3>Stops Time-Wasting Calls</h3>
-        <p>No more answering basic questions that pull you away from clients. The AI handles it so you never break focus.</p>
+        <h3>Filters Unqualified Calls</h3>
+        <p>No more answering price shoppers and off-topic calls. The AI screens and qualifies every inquiry before it reaches you.</p>
       </div>
       <div class="offer-card">
         <div class="offer-icon-wrap">💰</div>
         <h3>Human-Level Front Desk for Less</h3>
-        <p>A real receptionist costs $2,500–$3,500/mo. This runs 24/7 for ~$250/mo — and never calls in sick.</p>
+        <p>A real receptionist costs $3,000–$5,000/mo. This runs 24/7 for a fraction of that — and never calls in sick.</p>
       </div>
       <div class="offer-card">
         <div class="offer-icon-wrap">🎯</div>
-        <h3>Custom Built for Your Shop</h3>
-        <p>Trained on your services, barbers, prices, and hours. Works with your existing booking system — nothing changes on your end.</p>
+        <h3>Custom Built for Your Spa</h3>
+        <p>Trained on your services, providers, prices, and hours. Works with your existing booking system — nothing changes on your end.</p>
       </div>
     </div>
   </section>
@@ -952,122 +729,29 @@
         <div class="step-num">1</div>
         <div class="step-content">
           <h3>We Build Your AI Agent</h3>
-          <p>We custom-build your AI receptionist from scratch — trained on your services, barbers, prices, and hours.</p>
+          <p>We custom-build your AI receptionist from scratch — trained on your services, providers, pricing, and hours.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
         <div class="step-content">
-          <h3>We Connect It to Your Booking System</h3>
-          <p>We plug the AI into your existing setup. Nothing changes on your end — it just works.</p>
+          <h3>We Connect It to Your Calendar</h3>
+          <p>We plug the AI into your existing booking setup. Nothing changes on your end — it just works.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-content">
           <h3>Your Phone Goes Live</h3>
-          <p>From day one, every call gets answered 24/7. No voicemail. No missed customers. No interruptions.</p>
+          <p>From day one, every call gets answered 24/7. No voicemail. No missed clients. No interruptions to your team.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">4</div>
         <div class="step-content">
-          <h3>More Appointments After 30 Days</h3>
+          <h3>More Booked Consultations Within 30 Days</h3>
           <p>Within a month, your calendar is fuller. Every call that used to slip through is now a booked appointment.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── REVIEWS ── -->
-  <section id="reviews">
-    <div class="section-label">What Barbers Are Saying</div>
-    <h2 class="section-title">Real Results</h2>
-    <p class="section-desc">Barbers across the country are growing their business with our AI receptionist.</p>
-    <div class="reviews-grid">
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <p class="review-text">"I was losing at least 5–6 bookings a week just from missed calls while I was cutting. Since signing up, my schedule has been packed solid. Best investment I've made for my shop."</p>
-        <div class="reviewer">
-          <div class="reviewer-avatar">DM</div>
-          <div class="reviewer-info">
-            <strong>Darius M.</strong>
-            <span>Fresh Cuts Barbershop — Dallas, TX</span>
-          </div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <p class="review-text">"Setup was fast and easy. The AI sounds professional and handles everything. I don't have to worry about the phone anymore — it just works. My clients love how quick the booking is."</p>
-        <div class="reviewer">
-          <div class="reviewer-avatar">TJ</div>
-          <div class="reviewer-info">
-            <strong>Tony J.</strong>
-            <span>Prime Fadez — Atlanta, GA</span>
-          </div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <p class="review-text">"I was skeptical at first, but the demo sold me. Within the first week I had 12 new bookings I would've missed. The reminders alone have cut my no-shows in half."</p>
-        <div class="reviewer">
-          <div class="reviewer-avatar">KW</div>
-          <div class="reviewer-info">
-            <strong>Kevin W.</strong>
-            <span>The Barbery — Houston, TX</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── PRICING ── -->
-  <section id="pricing">
-    <div class="section-label">Transparent Pricing</div>
-    <h2 class="section-title">Simple, Honest Costs</h2>
-    <p class="section-desc">No contracts. No surprises. A real receptionist costs up to $3,000/mo — this does the same job, 24/7, for around $250.</p>
-
-    <div class="pricing-grid">
-
-      <!-- Card 2: Monthly Fee (featured) -->
-      <div class="pricing-card featured">
-        <div class="pricing-badge">Ongoing</div>
-        <div class="pricing-label">Monthly Fee</div>
-        <div class="pricing-price">$197<span style="font-size:1.1rem;font-weight:700;">/mo</span></div>
-        <div class="pricing-subtitle">We keep it running. You keep cutting.</div>
-        <div class="pricing-divider"></div>
-        <div class="pricing-note">Monitoring, updates &amp; support included</div>
-      </div>
-
-      <!-- Card 3: Usage Fee -->
-      <div class="pricing-card">
-        <div class="pricing-label">Usage Fee</div>
-        <div class="pricing-price">$30–$80<span style="font-size:1rem;font-weight:700;">/mo</span></div>
-        <div class="pricing-subtitle">Based on your call volume</div>
-        <div class="pricing-divider"></div>
-        <div class="pricing-note">
-          Think of it like your AI's phone bill
-          <span class="pricing-subnote">Charged per minute of call time</span>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Summary bar -->
-    <div class="pricing-summary">
-      <div class="pricing-summary-item">
-        <span class="ps-label">Monthly Fee</span>
-        <span class="ps-value">$197/mo</span>
-      </div>
-      <div class="pricing-summary-divider"></div>
-      <div class="pricing-summary-item">
-        <span class="ps-label">All in, every month</span>
-        <span class="ps-value">~$250/mo total</span>
-      </div>
-      <div class="pricing-summary-divider"></div>
-      <div class="pricing-summary-item">
-        <span class="ps-label">vs. Real Receptionist</span>
-        <span class="ps-value">$2,500–$3,500/mo</span>
       </div>
     </div>
   </section>
@@ -1075,8 +759,8 @@
   <!-- ── CONTACT ── -->
   <section id="contact">
     <div class="section-label">Let's Talk</div>
-    <h2 class="section-title">Ready to Fill Your Chair?</h2>
-    <p class="section-desc">Book a free 15-minute demo or reach out directly. We'll show you exactly how our AI works for your shop.</p>
+    <h2 class="section-title">Ready to Book More Clients?</h2>
+    <p class="section-desc">Book a free 15-minute demo. We'll show you exactly how our AI works for your spa — no pressure, no pitch deck.</p>
 
     <div class="contact-container">
       <div class="contact-info">
@@ -1128,8 +812,5 @@
     <p>&copy; 2026 Arlo Marketing Group. All rights reserved. &nbsp;|&nbsp; <a href="/privacy-policy.html" style="color:var(--muted);text-decoration:underline;">Privacy Policy</a> &nbsp;|&nbsp; <a href="/terms.html" style="color:var(--muted);text-decoration:underline;">Terms of Service</a></p>
   </footer>
 
-
 </body>
 </html>
-
-
