@@ -193,8 +193,8 @@
     .faq-list { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
     .faq-item { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; cursor: pointer; transition: border-color 0.2s; }
     .faq-item:hover { border-color: rgba(91,33,245,0.3); }
-    .faq-q { font-size: 1rem; font-weight: 700; color: var(--dark); display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-    .faq-q .faq-icon { color: var(--purple); font-size: 1.2rem; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-q { font-size: 1rem; font-weight: 700; color: var(--dark); display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+    .faq-q .faq-icon { color: var(--purple); font-size: 1.2rem; flex-shrink: 0; transition: transform 0.2s; margin-top: 2px; }
     .faq-a { font-size: 0.93rem; color: var(--muted); line-height: 1.7; margin-top: 12px; display: none; }
     .faq-item.open .faq-a { display: block; }
     .faq-item.open .faq-icon { transform: rotate(45deg); }
@@ -556,19 +556,27 @@
     <div class="faq-list">
       <div class="faq-item">
         <div class="faq-q">Does it work with my current booking software? <span class="faq-icon">+</span></div>
-        <div class="faq-a">Most likely yes. We connect Aria to your existing system — whether that's Jane, Mindbody, GHL, or something else. We handle the integration, not you.</div>
+        <div class="faq-a">Most likely yes. We connect Aria to your existing system — Jane, Mindbody, GHL, Square, and others. We handle the full integration. Nothing changes on your end and you don't need to switch software.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">What if it says something wrong? <span class="faq-icon">+</span></div>
-        <div class="faq-a">We test everything thoroughly before going live. You approve how Aria sounds before it takes a single real call. And if something needs tweaking after launch, we fix it fast.</div>
+        <div class="faq-q">What if the AI says something wrong? <span class="faq-icon">+</span></div>
+        <div class="faq-a">We test extensively before going live. You hear Aria in action and approve how she sounds before she takes a single real call. If anything needs adjusting after launch — new services, updated hours, changed providers — we fix it fast, usually same day.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">How long does setup take? <span class="faq-icon">+</span></div>
-        <div class="faq-a">Most spas are live within 48 hours of their onboarding call. We do the heavy lifting — you just give us your service info and we take it from there.</div>
+        <div class="faq-a">Most spas are live within 48 hours of their onboarding call. We build everything from scratch — your services, providers, pricing, and hours — so it sounds exactly like your spa, not a generic bot. You just give us the info and we handle the rest.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">Can it handle multiple providers with different schedules? <span class="faq-icon">+</span></div>
-        <div class="faq-a">Yes. Each provider gets their own calendar. Aria asks the caller for their preference and books with the right person — no overlap, no confusion.</div>
+        <div class="faq-a">Yes. Each provider gets their own calendar with their own availability. Aria asks callers for their preference and books with the right person automatically. No overlap, no double-booking, no confusion.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What happens if a caller asks something Aria doesn't know? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Aria is trained to handle this gracefully. If she doesn't have the answer, she tells the caller that someone from your team will follow up — she never guesses or makes things up. You can also set a transfer option so complex calls go straight to a live person.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is there a contract or long-term commitment? <span class="faq-icon">+</span></div>
+        <div class="faq-a">No contracts. We keep it month to month and adjust pricing based on your call volume. If something isn't working for you, you can cancel anytime. We'd rather earn your business every month than lock you in.</div>
       </div>
     </div>
   </section>
