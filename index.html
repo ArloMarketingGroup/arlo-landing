@@ -251,6 +251,20 @@
     .modal-title { font-size:0.78rem; font-weight:700; color:rgba(255,255,255,0.65); letter-spacing:0.08em; text-transform:uppercase; margin-left:8px; }
     .modal-close { background:rgba(255,255,255,0.08); border:none; color:rgba(255,255,255,0.6); font-size:1rem; cursor:pointer; width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; }
 
+    /* STICKY MOBILE CTA BAR */
+    .mobile-cta-bar { display: none; }
+
+    /* SECTION INLINE CTAS */
+    .section-cta { text-align: center; margin-top: 44px; }
+    .section-cta a {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--purple); color: white; font-weight: 700; font-size: 0.95rem;
+      padding: 14px 30px; border-radius: 8px; text-decoration: none;
+      box-shadow: 0 4px 20px rgba(91,33,245,0.3); transition: background 0.2s, transform 0.15s;
+    }
+    .section-cta a:hover { background: var(--purple-light); transform: translateY(-2px); }
+    .section-cta p { margin-top: 10px; font-size: 0.78rem; color: var(--muted); }
+
     /* RESPONSIVE */
     @media (max-width: 768px) {
       /* NAV */
@@ -313,6 +327,28 @@
       /* MODAL */
       .modal-card { width: 96%; border-radius: 16px; }
       #demo-iframe { height: 460px; }
+
+      /* STICKY CTA BAR */
+      .mobile-cta-bar {
+        display: flex;
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        z-index: 200;
+        background: rgba(255,255,255,0.97);
+        backdrop-filter: blur(12px);
+        border-top: 1px solid var(--border);
+        padding: 12px 16px;
+        gap: 10px;
+        box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+      }
+      .mobile-cta-bar a, .mobile-cta-bar button {
+        flex: 1; text-align: center; padding: 13px 10px; border-radius: 8px;
+        font-weight: 700; font-size: 0.85rem; letter-spacing: 0.02em;
+        cursor: pointer; border: none; font-family: inherit; text-decoration: none;
+      }
+      .mobile-cta-primary { background: var(--purple); color: white; box-shadow: 0 4px 16px rgba(91,33,245,0.35); }
+      .mobile-cta-secondary { background: var(--purple-soft); color: var(--purple); }
+      body { padding-bottom: 76px; }
     }
 
     @media (max-width: 400px) {
@@ -323,6 +359,12 @@
   </style>
 </head>
 <body>
+
+  <!-- STICKY MOBILE CTA BAR -->
+  <div class="mobile-cta-bar">
+    <button class="mobile-cta-secondary" onclick="openDemo()">🎙️ Try Demo</button>
+    <a href="#contact" class="mobile-cta-primary">Book a Free Call</a>
+  </div>
 
   <!-- NAV -->
   <nav>
@@ -509,6 +551,10 @@
         <p>Trained on your specific services, providers, and hours. It sounds like your spa — not a generic bot.</p>
       </div>
     </div>
+    <div class="section-cta">
+      <a href="#contact">Get This for My Spa →</a>
+      <p>Free 15-minute call. No contracts.</p>
+    </div>
   </section>
 
   <!-- HOW IT WORKS -->
@@ -545,6 +591,10 @@
           <p>New services, new providers, new hours — we update Aria whenever you need. No tech knowledge required.</p>
         </div>
       </div>
+    </div>
+    <div class="section-cta">
+      <a href="#contact">Book My Free Call →</a>
+      <p>We handle the whole setup. You just answer calls.</p>
     </div>
   </section>
 
