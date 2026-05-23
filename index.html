@@ -745,7 +745,84 @@
       .demo-arrow { display: none; }
     }
 
-    /* ── RESPONSIVE ── */
+    /* Step 2 unlock animation */
+    @keyframes bounceLeft {
+      0%, 100% { transform: translateX(0); opacity: 1; }
+      50% { transform: translateX(-10px); opacity: 0.6; }
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(91,33,245,0.3); }
+      50% { box-shadow: 0 0 60px rgba(91,33,245,0.7), 0 0 100px rgba(91,33,245,0.3); }
+    }
+
+    .demo-step-card.unlocked {
+      animation: glowPulse 1.5s ease-in-out 3;
+    }
+
+    #step2-arrow {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    #step2-arrow.visible {
+      display: flex;
+      animation: bounceLeft 0.8s ease-in-out infinite;
+    }
+
+    #step2-arrow span {
+      font-size: 2rem;
+      color: var(--purple);
+    }
+
+    #step2-arrow p {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--purple-mid);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+    }
+
+    .step2-callout {
+      display: none;
+      position: absolute;
+      top: -48px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--purple);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 100px;
+      white-space: nowrap;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 20px rgba(91,33,245,0.5);
+    }
+
+    .step2-callout::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0; height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid var(--purple);
+    }
+
+    .step2-callout.visible {
+      display: block;
+      animation: bounceLeft 1s ease-in-out 3;
+    }
     @media (max-width: 768px) {
       .hero-inner { grid-template-columns: 1fr; }
       .hero-visual { display: none; }
@@ -857,10 +934,11 @@
         <p style="font-size:0.75rem;color:rgba(255,255,255,0.3);margin-top:12px;margin-bottom:0;">Click anywhere on this card</p>
       </div>
 
-      <div class="demo-arrow">→</div>
+      <div class="demo-arrow" id="step2-arrow">→</div>
 
       <!-- Step 2 -->
-      <div class="demo-step-card" id="step2-card" style="cursor:not-allowed;">
+      <div class="demo-step-card" id="step2-card" style="cursor:not-allowed;position:relative;">
+        <div class="step2-callout" id="step2-callout">👆 Try this next!</div>
         <div class="demo-step-num">2</div>
         <h3>Want This for Your Spa?</h3>
         <p>You just experienced what your clients would hear every time they call. Get this running for your med spa — fully done for you, no tech skills needed.</p>
@@ -926,13 +1004,23 @@
         step1Done = true;
         var step2card = document.getElementById('step2-card');
         var step2btn = document.getElementById('step2-btn');
+        var arrow = document.getElementById('step2-arrow');
+        var callout = document.getElementById('step2-callout');
         step2card.classList.add('active');
+        step2card.classList.add('unlocked');
         step2card.style.cursor = 'pointer';
         step2card.onclick = function() { openDemo(2); };
         step2btn.classList.remove('btn-demo-outline');
         step2btn.classList.add('btn-demo');
-        var note = step2card.querySelector('p:last-child');
+        arrow.classList.add('visible');
+        callout.classList.add('visible');
+        var note = step2card.querySelector('p:last-of-type');
         if (note) note.textContent = 'Click anywhere on this card';
+        // Remove arrow animation after 6s
+        setTimeout(function() {
+          arrow.classList.remove('visible');
+          callout.classList.remove('visible');
+        }, 6000);
       }
     }
 
