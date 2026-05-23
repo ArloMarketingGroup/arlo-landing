@@ -483,6 +483,7 @@
   <script>
     function openDemo() {
       window.open('https://agent.retellai.com/orb/agent_ada7705aff71abb4ad7b07ef1d?token=6a2369d263f03cb6bc1fc11e0fcac805', '_blank');
+      setTimeout(showBanner, 30000);
     }
 
     // FAQ accordion
@@ -493,6 +494,59 @@
         if (!isOpen) this.classList.add('open');
       });
     });
+  </script>
+
+  <!-- DEMO RETURN BANNER -->
+  <div id="demo-banner" style="
+    display:none;
+    position:fixed;
+    bottom:90px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:300;
+    background:var(--dark);
+    border:1px solid rgba(91,33,245,0.6);
+    border-radius:16px;
+    padding:18px 24px;
+    box-shadow:0 0 40px rgba(91,33,245,0.3), 0 8px 30px rgba(0,0,0,0.5);
+    display:flex;
+    align-items:center;
+    gap:16px;
+    width:90%;
+    max-width:480px;
+    opacity:0;
+    transition:opacity 0.4s ease, bottom 0.4s ease;
+  ">
+    <div style="flex:1;">
+      <p style="color:white;font-weight:700;font-size:0.95rem;margin-bottom:3px;">Liked what you heard?</p>
+      <p style="color:rgba(255,255,255,0.5);font-size:0.8rem;">Get Aria set up for your med spa.</p>
+    </div>
+    <a href="#contact" onclick="dismissBanner()" style="
+      background:var(--purple);color:white;font-weight:700;font-size:0.82rem;
+      padding:10px 18px;border-radius:8px;text-decoration:none;white-space:nowrap;
+      box-shadow:0 4px 16px rgba(91,33,245,0.4);
+    ">Book a Call →</a>
+    <button onclick="dismissBanner()" style="
+      background:none;border:none;color:rgba(255,255,255,0.35);
+      font-size:1.2rem;cursor:pointer;padding:4px;line-height:1;flex-shrink:0;
+    ">×</button>
+  </div>
+
+  <script>
+    // Show banner with fade-in
+    var banner = document.getElementById('demo-banner');
+    function showBanner() {
+      banner.style.display = 'flex';
+      setTimeout(function() { banner.style.opacity = '1'; banner.style.bottom = '100px'; }, 50);
+    }
+    function dismissBanner() {
+      banner.style.opacity = '0';
+      banner.style.bottom = '90px';
+      setTimeout(function() { banner.style.display = 'none'; }, 400);
+      setTimeout(function() {
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+    }
   </script>
 
   <!-- OFFER -->
