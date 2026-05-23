@@ -926,7 +926,7 @@
     <div class="demo-steps">
 
       <!-- Step 1 -->
-      <div class="demo-step-card active" id="step1-card" onclick="openDemo(1)" style="cursor:pointer;">
+      <div class="demo-step-card active" id="step1-card" onclick="openDemo(1)" style="cursor:pointer;max-width:520px;margin:0 auto;">
         <div class="demo-step-num">1</div>
         <h3>Talk to Aria</h3>
         <p>Call in as a patient. Book an appointment. Feel exactly how your clients would experience your AI receptionist.</p>
@@ -934,26 +934,9 @@
         <p style="font-size:0.75rem;color:rgba(255,255,255,0.3);margin-top:12px;margin-bottom:0;">Click anywhere on this card</p>
       </div>
 
-      <div class="demo-arrow" id="step2-arrow">→</div>
-
-      <!-- Step 2 -->
-      <div class="demo-step-card" id="step2-card" style="cursor:not-allowed;position:relative;">
-        <div class="step2-callout" id="step2-callout">👆 Try this next!</div>
-        <div class="demo-step-num">2</div>
-        <h3>Want This for Your Spa?</h3>
-        <p>You just experienced what your clients would hear every time they call. Get this running for your med spa — fully done for you, no tech skills needed.</p>
-        <div class="btn-demo-outline" id="step2-btn">🚀 Get This for My Spa</div>
-        <p style="font-size:0.75rem;color:rgba(255,255,255,0.3);margin-top:12px;margin-bottom:0;">Complete Step 1 to unlock</p>
-      </div>
-
     </div>
 
     <p class="demo-note">No signup required. Works in your browser. Takes about 2 minutes.</p>
-
-    <div style="margin-top:40px;text-align:center;padding:24px 32px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px;max-width:500px;margin-left:auto;margin-right:auto;">
-      <p style="color:rgba(255,255,255,0.5);font-size:0.88rem;margin-bottom:12px;line-height:1.6;">Not a phone person? No problem.<br>Fill out the form below and we'll reach out to schedule your demo.</p>
-      <a href="#contact" class="btn-demo" style="display:inline-flex;">📋 Skip to the Form</a>
-    </div>
   </section>
 
   <!-- ── DEMO MODAL ── -->
@@ -1000,28 +983,10 @@
       iframe.src = '';
       modal.style.display = 'none';
       document.body.style.overflow = '';
-      if (!step1Done) {
-        step1Done = true;
-        var step2card = document.getElementById('step2-card');
-        var step2btn = document.getElementById('step2-btn');
-        var arrow = document.getElementById('step2-arrow');
-        var callout = document.getElementById('step2-callout');
-        step2card.classList.add('active');
-        step2card.classList.add('unlocked');
-        step2card.style.cursor = 'pointer';
-        step2card.onclick = function() { openDemo(2); };
-        step2btn.classList.remove('btn-demo-outline');
-        step2btn.classList.add('btn-demo');
-        arrow.classList.add('visible');
-        callout.classList.add('visible');
-        var note = step2card.querySelector('p:last-of-type');
-        if (note) note.textContent = 'Click anywhere on this card';
-        // Remove arrow animation after 6s
-        setTimeout(function() {
-          arrow.classList.remove('visible');
-          callout.classList.remove('visible');
-        }, 6000);
-      }
+      // Scroll to contact form
+      setTimeout(function() {
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+      }, 400);
     }
 
     // Close on backdrop click
@@ -1112,7 +1077,7 @@
   <section id="contact">
     <div class="section-label">Let's Talk</div>
     <h2 class="section-title">Ready to Book More Clients?</h2>
-    <p class="section-desc">Book a free 15-minute demo. We'll show you exactly how our AI works for your spa — no pressure, no pitch deck.</p>
+    <p class="section-desc">You just heard what your clients would experience. Now let's get it running for your spa. Book a free 15-minute call below — no pressure, no pitch deck.</p>
 
     <div class="contact-container">
       <div class="contact-info">
