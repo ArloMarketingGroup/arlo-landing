@@ -776,7 +776,7 @@
           <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.975.975-1.246-2.242-1.308-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.975-.975 2.242-1.246 3.608-1.308C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.014 7.052.072 5.197.157 3.355.673 2.014 2.014.673 3.355.157 5.197.072 7.052.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.085 1.855.601 3.697 1.942 5.038 1.341 1.341 3.183 1.857 5.038 1.942C8.332 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.855-.085 3.697-.601 5.038-1.942 1.341-1.341 1.857-3.183 1.942-5.038C23.986 15.668 24 15.259 24 12s-.014-3.668-.072-4.948c-.085-1.855-.601-3.697-1.942-5.038C20.645.673 18.803.157 16.948.072 15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
         </svg>
       </a>
-      <a href="tel:9454009135" class="nav-phone">(945) 400-9135</a>
+      <a href="#demo" class="btn-nav" style="background:transparent;border:1.5px solid var(--purple);color:var(--purple);" onclick="openDemo(1)">Try Demo</a>
       <a href="#contact" class="btn-nav">Book a Demo</a>
     </div>
   </nav>
@@ -849,25 +849,23 @@
     <div class="demo-steps">
 
       <!-- Step 1 -->
-      <div class="demo-step-card active" id="step1-card">
+      <div class="demo-step-card active" id="step1-card" onclick="openDemo(1)" style="cursor:pointer;">
         <div class="demo-step-num">1</div>
         <h3>Talk to Aria</h3>
-        <p>Call in as a patient. Book an appointment. See exactly how your clients would experience your AI receptionist.</p>
-        <a href="https://agent.retellai.com/orb/agent_ada7705aff71abb4ad7b07ef1d?token=6a2369d263f03cb6bc1fc11e0fcac805" target="_blank" class="btn-demo" id="step1-btn" onclick="activateStep2()">
-          🎙️ Talk to Aria Now
-        </a>
+        <p>Call in as a patient. Book an appointment. Feel exactly how your clients would experience your AI receptionist.</p>
+        <div class="btn-demo">🎙️ Start the Demo</div>
+        <p style="font-size:0.75rem;color:rgba(255,255,255,0.3);margin-top:12px;margin-bottom:0;">Click anywhere on this card</p>
       </div>
 
       <div class="demo-arrow">→</div>
 
       <!-- Step 2 -->
-      <div class="demo-step-card" id="step2-card">
+      <div class="demo-step-card" id="step2-card" style="cursor:not-allowed;">
         <div class="demo-step-num">2</div>
         <h3>Get This for Your Spa</h3>
-        <p>After the demo, find out how to get Aria answering calls and booking appointments for your med spa — fully done for you.</p>
-        <a href="https://agent.retellai.com/orb/agent_7bd143defe658fada5d544da2c?token=ff64bd02894f2b2d356f1ee4964f580e" target="_blank" class="btn-demo-outline" id="step2-btn">
-          💬 Talk to Alex →
-        </a>
+        <p>After the demo, find out how to get Aria answering calls and booking appointments for your med spa — fully set up for you.</p>
+        <div class="btn-demo-outline" id="step2-btn">💬 Talk to Alex →</div>
+        <p style="font-size:0.75rem;color:rgba(255,255,255,0.3);margin-top:12px;margin-bottom:0;">Complete Step 1 to unlock</p>
       </div>
 
     </div>
@@ -875,15 +873,63 @@
     <p class="demo-note">No signup required. Works in your browser. Takes about 2 minutes.</p>
   </section>
 
+  <!-- ── DEMO MODAL ── -->
+  <div id="demo-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:9999;align-items:center;justify-content:center;flex-direction:column;">
+    <div style="position:relative;width:90%;max-width:520px;background:#111;border:1px solid rgba(91,33,245,0.4);border-radius:20px;overflow:hidden;box-shadow:0 0 80px rgba(91,33,245,0.3);">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:1px solid rgba(255,255,255,0.08);">
+        <span id="modal-title" style="font-size:0.9rem;font-weight:700;color:white;letter-spacing:0.06em;"></span>
+        <button onclick="closeDemo()" style="background:none;border:none;color:rgba(255,255,255,0.5);font-size:1.4rem;cursor:pointer;line-height:1;">×</button>
+      </div>
+      <iframe id="demo-iframe" src="" style="width:100%;height:580px;border:none;display:block;" allow="microphone"></iframe>
+    </div>
+    <p style="color:rgba(255,255,255,0.35);font-size:0.8rem;margin-top:16px;">Press × or click outside to close</p>
+  </div>
+
   <script>
-    function activateStep2() {
-      setTimeout(function() {
-        document.getElementById('step2-card').classList.add('active');
-        var btn = document.getElementById('step2-btn');
-        btn.classList.remove('btn-demo-outline');
-        btn.classList.add('btn-demo');
-      }, 3000);
+    var ARIA_URL = "https://agent.retellai.com/orb/agent_ada7705aff71abb4ad7b07ef1d?token=6a2369d263f03cb6bc1fc11e0fcac805";
+    var ALEX_URL = "https://agent.retellai.com/orb/agent_7bd143defe658fada5d544da2c?token=ff64bd02894f2b2d356f1ee4964f580e";
+    var step1Done = false;
+
+    function openDemo(step) {
+      if (step === 2 && !step1Done) return;
+      var modal = document.getElementById('demo-modal');
+      var iframe = document.getElementById('demo-iframe');
+      var title = document.getElementById('modal-title');
+      if (step === 1) {
+        iframe.src = ARIA_URL;
+        title.textContent = 'Aria · Radiance Med Spa AI Receptionist';
+      } else {
+        iframe.src = ALEX_URL;
+        title.textContent = 'Alex · Arlo Marketing Group';
+      }
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
     }
+
+    function closeDemo() {
+      var modal = document.getElementById('demo-modal');
+      var iframe = document.getElementById('demo-iframe');
+      iframe.src = '';
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+      if (!step1Done) {
+        step1Done = true;
+        var step2card = document.getElementById('step2-card');
+        var step2btn = document.getElementById('step2-btn');
+        step2card.classList.add('active');
+        step2card.style.cursor = 'pointer';
+        step2card.onclick = function() { openDemo(2); };
+        step2btn.classList.remove('btn-demo-outline');
+        step2btn.classList.add('btn-demo');
+        var note = step2card.querySelector('p:last-child');
+        if (note) note.textContent = 'Click anywhere on this card';
+      }
+    }
+
+    // Close on backdrop click
+    document.getElementById('demo-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeDemo();
+    });
   </script>
 
 
