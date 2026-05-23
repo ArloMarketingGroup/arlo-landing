@@ -253,13 +253,72 @@
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
-      .hero-inner { grid-template-columns: 1fr; }
+      /* NAV */
+      nav { padding: 14px 5%; }
+      .btn-nav-outline { display: none; }
+      .btn-nav { padding: 9px 16px; font-size: 0.76rem; }
+      .nav-logo-text .line1 { font-size: 0.68rem; }
+      .nav-logo-text .line2 { font-size: 0.56rem; }
+
+      /* HERO */
+      #hero { padding: 100px 5% 60px; min-height: auto; }
+      .hero-inner { grid-template-columns: 1fr; gap: 0; }
       .hero-visual { display: none; }
-      .nav-phone { display: none; }
-      footer { flex-direction: column; text-align: center; }
-      .steps::before { display: none; }
-      .stats-inner { gap: 24px; }
+      h1 { font-size: 2.2rem; }
+      .hero-sub { font-size: 0.97rem; }
+      .hero-btns { flex-direction: column; gap: 10px; }
+      .btn-primary, .btn-ghost { text-align: center; justify-content: center; width: 100%; padding: 14px 20px; }
+
+      /* STAT BAR */
+      #stats { padding: 28px 5%; }
+      .stats-inner { flex-direction: column; gap: 20px; align-items: flex-start; }
       .stat-divider { display: none; }
+      .stat-item { text-align: left; }
+      .stat-num { font-size: 1.5rem; }
+
+      /* DEMO */
+      #demo { padding: 60px 5%; }
+      .demo-card { padding: 28px 20px; }
+      .demo-title { font-size: 1.7rem; }
+
+      /* OFFER */
+      #offer { padding: 60px 5%; }
+      .offer-grid { grid-template-columns: 1fr; gap: 14px; }
+      .section-title { font-size: 1.6rem; }
+
+      /* HOW IT WORKS */
+      #how { padding: 60px 5%; }
+      .steps::before { display: none; }
+      .step { gap: 16px; }
+      .step-num { width: 44px; height: 44px; font-size: 0.9rem; }
+
+      /* FAQ */
+      #faq { padding: 60px 5%; }
+      .faq-item { padding: 18px 20px; }
+      .faq-q { font-size: 0.93rem; }
+
+      /* CLOSING CTA */
+      #cta { padding: 60px 5%; }
+      .cta-headline { font-size: 1.9rem; }
+      .btn-cta { width: 100%; justify-content: center; padding: 16px 24px; font-size: 0.97rem; }
+
+      /* CONTACT */
+      #contact { padding: 60px 5%; }
+      .contact-info { gap: 10px; }
+
+      /* FOOTER */
+      footer { flex-direction: column; text-align: center; padding: 22px 5%; }
+      footer p { font-size: 0.72rem; }
+
+      /* MODAL */
+      .modal-card { width: 96%; border-radius: 16px; }
+      #demo-iframe { height: 460px; }
+    }
+
+    @media (max-width: 400px) {
+      h1 { font-size: 1.9rem; }
+      .demo-title { font-size: 1.4rem; }
+      .cta-headline { font-size: 1.6rem; }
     }
   </style>
 </head>
