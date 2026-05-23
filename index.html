@@ -479,40 +479,11 @@
     </div>
   </section>
 
-  <!-- DEMO MODAL -->
-  <div id="demo-modal">
-    <div class="modal-card">
-      <div class="modal-header">
-        <div style="display:flex;align-items:center;">
-          <div class="modal-dot"></div>
-          <span class="modal-title">Aria · Radiance Med Spa</span>
-        </div>
-        <button class="modal-close" onclick="closeDemo()">×</button>
-      </div>
-      <iframe id="demo-iframe" src="" style="width:100%;height:500px;border:none;display:block;" allow="microphone"></iframe>
-    </div>
-    <p style="color:rgba(255,255,255,0.25);font-size:0.75rem;margin-top:14px;">Click outside or press × to close</p>
-  </div>
 
   <script>
-    var ARIA_URL = "https://agent.retellai.com/orb/agent_ada7705aff71abb4ad7b07ef1d?token=6a2369d263f03cb6bc1fc11e0fcac805";
     function openDemo() {
-      var modal = document.getElementById('demo-modal');
-      document.getElementById('demo-iframe').src = ARIA_URL;
-      modal.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
+      window.open('https://agent.retellai.com/orb/agent_ada7705aff71abb4ad7b07ef1d?token=6a2369d263f03cb6bc1fc11e0fcac805', '_blank');
     }
-    function closeDemo() {
-      document.getElementById('demo-iframe').src = '';
-      document.getElementById('demo-modal').style.display = 'none';
-      document.body.style.overflow = '';
-      setTimeout(function() {
-        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-      }, 400);
-    }
-    document.getElementById('demo-modal').addEventListener('click', function(e) {
-      if (e.target === this) closeDemo();
-    });
 
     // FAQ accordion
     document.querySelectorAll('.faq-item').forEach(function(item) {
